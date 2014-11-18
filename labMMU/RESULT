@@ -1,0 +1,31 @@
+Texas Instruments X-Loader 1.41
+Starting OS Bootloader...
+
+
+U-Boot 1.3.3 (Nov 23 2008 - 18:48:04)
+
+OMAP3530-GP rev 2, CPU-OPP2 L3-165MHz
+OMAP3 Beagle Board + LPDDR/NAND
+DRAM:  128 MB
+NAND:  256 MiB
+*** Warning - bad CRC or NAND, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Hit any key to stop autoboot:  0 
+OMAP3 beagleboard.org # nand read 0x80300000 0x280000 0x400000
+
+NAND read: device 0 offset 0x280000, size 0x400000
+ 4194304 bytes read: OK
+OMAP3 beagleboard.org # go 0x80300000
+## Starting application at 0x80300000 ...
+helloworld
+testing printk
+test string :::	this is %s test
+test char ::: H
+test digit ::: -256
+test X ::: 0xffffff00
+test unsigned ::: 4294967040
+test zero ::: 0
+
