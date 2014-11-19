@@ -23,7 +23,7 @@ Hzu Hang modifed.
 
 typedef void (*init_func)(void);
 
-#define UFCON0	((volatile unsigned int *)(0x49020000))
+#define UFCON0	((volatile unsigned int *)(0x20201000))
 
 void helloworld(void){
 	const char *p="HelloWorld\n";
