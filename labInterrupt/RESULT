@@ -20,4 +20,7 @@ page_table[2576]addr=0x16840, section=0x21000412
 page_talble base=0x14000 page_table409=0x17ffc 
 test_mmu
 Finish TEST
+IRQ_handler
+IRQ_handler
+IRQ_handler
 
