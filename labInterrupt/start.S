@@ -43,11 +43,11 @@ Modified by Carlos Hsu <karose.tzu@gmail.com>
 .equ TEXT_BASE,			0x0008000
 
 .equ _SVC_STACK,		(TEXT_BASE+MEM_SIZE-4)
-.equ _IRQ_STACK,		(_SVC_STACK+0x400)
-.equ _FIQ_STACK,		(_IRQ_STACK+0x400)
-.equ _ABT_STACK,		(_FIQ_STACK+0x400)
-.equ _UND_STACK,		(_ABT_STACK+0x400)
-.equ _SYS_STACK,		(_UND_STACK+0x400)
+.equ _IRQ_STACK,		(_SVC_STACK-0x400)
+.equ _FIQ_STACK,		(_IRQ_STACK-0x400)
+.equ _ABT_STACK,		(_FIQ_STACK-0x400)
+.equ _UND_STACK,		(_ABT_STACK-0x400)
+.equ _SYS_STACK,		(_UND_STACK-0x400)
 
 .text
 .code 32
