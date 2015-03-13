@@ -1,4 +1,3 @@
-
 Raspbery Pi (ARMv6) bare metal microkernel OS development 
 
 hello1 - bare metal helloworld example. 
@@ -9,7 +8,7 @@ labInterrupt - ARM interrupt example.
 
 labMem -Buddy memory allocation example. 
 
-pi-baremetal - Merged brianwiddas and Daniel Santos Bathke examples. (brianwiddas原本的code有MMU, interrupt, mailbox, atgs但沒有process，參考了Daniel的文章加入了system call, process, fork, scheduler。)
+pi-baremetal - A nice Raspberry Pi example, Merged brianwiddas and Daniel Santos Bathke examples. (Brianwiddas原本的code有MMU, interrupt, mailbox, atgs但沒有process，參考了Daniel的文章加入了system call, process, fork, scheduler。)
 
 check my blog for details
 http://karosesblog.blogspot.tw/
