@@ -7,6 +7,8 @@ labMMU - MMU initialization(啟動跟初始化MMU).
 
 labInterrupt - ARM interrupt example. 
 
+labMem -Buddy memory allocation example. 
+
 check my blog for details
 http://karosesblog.blogspot.tw/
 
