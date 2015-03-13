@@ -7,6 +7,8 @@
 #include "memory.h"
 #include "memutils.h"
 #include "textutils.h"
+#include "process.h"
+#include "scheduler.h"
 
 /* Pull various bits of information from the VideoCore and display it on
  * screen
@@ -175,8 +177,17 @@ static volatile unsigned int *gpioGPSET0 = (unsigned int *) mem_p2v(0x20201000);
         testmmu(0xA0203000);
 	led_init();
 	fb_init();
+
+        create_main_process();
+        
+        // Create three sample processes with name and address of function
+	fork("Sample process 1", &sample_process_1);
+	fork("Sample process 2", &sample_process_2);
+	fork("Sample process 3", &sample_process_2);
+
 	interrupts_init();
 
+        
 	/* Say hello */
 	console_write("Pi-Baremetal booted\n\n");
 

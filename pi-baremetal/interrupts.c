@@ -4,6 +4,8 @@
 #include "led.h"
 #include "memory.h"
 #include "textutils.h"
+#include "scheduler.h"
+#include "syscall.h"
 
 static volatile unsigned int *irqEnable1 = (unsigned int *) mem_p2v(0x2000b210);
 static volatile unsigned int *irqEnable2 = (unsigned int *) mem_p2v(0x2000b214);
@@ -64,9 +66,68 @@ __attribute__ ((interrupt ("SWI"))) void interrupt_swi(void)
 
 /* IRQs flash the OK LED */
 __attribute__ ((interrupt ("IRQ"))) void interrupt_irq(void)
-{
-	*armTimerIRQClear = 0;
+{   
+	// This function starts on IRQ mode
+	
+	// Push all registers into the IRQ mode stack (R13)
+	asm volatile("push {R0-R12}");
+	
+	// Put LR register of IRQ mode (PC of interrupted process) on R0
+	asm volatile("MOV R0, LR");
+	
+	
+	// Change to system mode
+	asm volatile("cps #0x1f");
+	
+	// Push R0 (interrupted PC) to the system mode stack
+	asm volatile("push {R0}");
+	
+	
+	// Return to IRQ mode
+	asm volatile("cps #0x12");
+	
+	// Pop all registers again
+	asm volatile("pop {R0-R12}");
+	
+	
+	// Return to system mode
+	asm volatile("cps #0x1f");
+	
+	// Push all registers into the system mode stack
+	asm volatile("push {R0-R12}");
+	
+	// Push the interrupted LR to system mode stack
+	asm volatile("push {LR}");
+	
+	// Copy the processor status to R0
+    asm volatile("MRS R0, SPSR");
+    
+    // Push the processor status to system mode stack
+    asm volatile("push {R0}");
+    
+    
+    // Return to IRQ mode
+    asm volatile("cps #0x12");
+	
+	// Copy LR to R0
+	asm volatile("MOV R0, LR");
+	
+	// Back to system mode
+	asm volatile("cps #0x1f");
+	
+	unsigned long pc;
+
+    unsigned long stack_pointer;
+	
+	// Getting pc and stack just to debug
+	asm volatile ("MOV %0, R0\n\t" : "=r" (pc) );
+    asm volatile ("MOV %0, SP\n\t" : "=r" (stack_pointer) );
+    
+    // Invert led to inform context switch activity
 	led_invert();
+	
+	// Jump to scheduler to do the context switch
+	schedule_timeout(stack_pointer, pc);
 }
 
 __attribute__ ((interrupt ("ABORT"))) void interrupt_data_abort(void)
@@ -148,4 +209,9 @@ void interrupts_init(void)
 	 * (did they mean 32 bit?)
 	 */
 	*armTimerControl = 0x000000aa;
+}
+
+void timer_reset(void)
+{
+	*armTimerIRQClear = 0;
 }
