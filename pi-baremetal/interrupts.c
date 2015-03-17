@@ -62,6 +62,12 @@ __attribute__ ((interrupt ("SWI"))) void interrupt_swi(void)
 	console_write("  SWI number ");
 	console_write(todec(swi_no, 0));
 	console_write(COLOUR_POP "\n");
+
+        //change processor mode
+        asm volatile("cps #0x1f");
+
+        //Handle syscall 
+        syscall(swi_no);
 }
 
 /* IRQs flash the OK LED */
