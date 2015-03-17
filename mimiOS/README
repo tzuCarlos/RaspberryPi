@@ -1,10 +1,7 @@
 
-Raspberry Pi (ARMv6) Buddy memory allocation example
-
-
+MimiOS - A tiny OS on Raspberry Pi ARMv6 board. 
+ 
  check my blog for details
 http://karosesblog.blogspot.tw/
 
- Reference:
-             leeos http://www.leeos.org
-             brianwiddas https://github.com/brianwiddas/pi-baremetal
+ 
