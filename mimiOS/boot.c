@@ -66,9 +66,14 @@ void plat_boot(void){
 	}
 	   
         printk("PRINTK TEST\n");
+
         enable_mmu2();
         test_mmu();
-      IRQ_init();
+        
+        //Timer interrupt init.
+        IRQ_init();
+
+        //memory management Buddy system
         init_page_map();
         char *p1,*p2,*p3,*p4;
 	p1=(char *)get_free_pages(0,6);
@@ -88,7 +93,7 @@ void plat_boot(void){
 	// Create three sample processes with name and address of function
 	fork("Sample process 1", &sample_process_1);
 	fork("Sample process 2", &sample_process_2);
-		fork("Sample process 3", &sample_process_2);
+        fork("Sample process 3", &sample_process_2);
 
         while(1);
 }

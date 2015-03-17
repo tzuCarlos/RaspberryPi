@@ -55,7 +55,7 @@ Modified by Carlos Hsu <karose.tzu@gmail.com>
 __vector_undefined:
 	nop
 __vector_swi:
-	nop
+	bl SWI_handler
 __vector_prefetch_abort:	
 	nop
 __vector_data_abort:
@@ -64,13 +64,13 @@ __vector_reserved:
 	nop
 __vector_irq:
 	// save registers
-	stmfd	r13!, {r0-r12,lr}
+//	stmfd	r13!, {r0-r12,lr}
 	// call interrupt handler
 	bl	IRQ_handler
 	// restore registers
-	ldmfd	r13!, {r0-r12,lr}
+//	ldmfd	r13!, {r0-r12,lr}
 	// return address（IRQ lr-4)
-	subs	pc,lr, #4
+//	subs	pc,lr, #4
 __vector_fiq:
 	nop
 

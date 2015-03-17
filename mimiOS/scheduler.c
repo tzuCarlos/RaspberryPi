@@ -91,7 +91,8 @@ int next_waiting_process_index() {
 	// Start in the active index
 	int next_process_index = active_process_index;
 	
-	// Do this while the actual process isnt in the waiting status and not reach the actual running process
+	// Do this while the actual process isnt in the waiting status 
+       //  and not reach the actual running process
 	do {
 		next_process_index++;
 		
@@ -132,7 +133,7 @@ void schedule_timeout(unsigned long stack_pointer, unsigned long pc) {
 	}
 
     //halt system to check debug messages.
-	debug_counter++;	
+//	debug_counter++;	
 	if(debug_counter >3)
 	{
 		printk("debug.... halting. \n");
@@ -148,12 +149,12 @@ void schedule_timeout(unsigned long stack_pointer, unsigned long pc) {
     printk(process_list[active_process_index].name);
     printk(". Switching to next process.\n");      
 
-	printk("Saving stack...");
+    printk("Saving stack...");
     printk(" stack saved, was 0x");
     printk("%x",process_list[active_process_index].stack_pointer);
     printk("\n");
 
-	printk("Saving pc...");
+    printk("Saving pc...");
     printk(" pc saved, was 0x");
     printk("%x",process_list[active_process_index].pc);
     printk("\n");
