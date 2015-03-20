@@ -8,10 +8,12 @@ labInterrupt - ARM interrupt example.
 
 labMem -Buddy memory allocation example. 
 
- mimiOS - scheduler (round robin) and process frok example.  
+mimiOS - scheduler (round robin) and process frok example.  
 
-pi-baremetal - A nice Raspberry Pi example, Merged brianwiddas and Daniel Santos Bathke examples. (Brianwiddas原本的code有MMU, interrupt, mailbox, atgs但沒有process，參考了Daniel的文章加入了system call, process, fork, scheduler。)
 
+-------------------------------------------------------------------------------------------------------------------
+pi-baremetal - A nice Raspberry Pi example, Merged brianwiddas and Daniel Santos Bathke examples. (Brianwiddas's origional code has MMU, interrupt, mailbox, atgs but no process, referenced Daniel's tutorial merged system call, process, fork, scheduler into it。)
+-------------------------------------------------------------------------------------------------------------------
 check my blog for details
 http://karosesblog.blogspot.tw/
 
