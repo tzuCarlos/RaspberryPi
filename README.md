@@ -8,9 +8,9 @@ labMMU - MMU initialization(啟動跟初始化MMU).
 
 labInterrupt - ARM interrupt example. 
 
-labMem -Buddy memory allocation example. 
+labMem - Buddy system memory allocation example. 
 
-mimiOS - scheduler (round robin) and process frok example.  
+mimiOS - system call , round robin scheduling and process fork example.  
 
 
 
