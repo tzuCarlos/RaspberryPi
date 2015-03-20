@@ -55,7 +55,11 @@ Modified by Carlos Hsu <karose.tzu@gmail.com>
 __vector_undefined:
 	nop
 __vector_swi:
-	bl SWI_handler
+	ldr r0,[lr,#-4]
+        mov  r1,#0x00FFFFFF
+        and r0, r0, r1
+        cps #0x1f
+	bl syscall
 __vector_prefetch_abort:	
 	nop
 __vector_data_abort:

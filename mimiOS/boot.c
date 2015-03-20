@@ -71,7 +71,7 @@ void plat_boot(void){
         test_mmu();
         
         //Timer interrupt init.
-        IRQ_init();
+        //IRQ_init();
 
         //memory management Buddy system
         init_page_map();
@@ -95,5 +95,6 @@ void plat_boot(void){
 	fork("Sample process 2", &sample_process_2);
         fork("Sample process 3", &sample_process_2);
 
+        IRQ_init();
         while(1);
 }

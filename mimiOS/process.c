@@ -11,7 +11,7 @@ void sample_process_1() {
     
     printk("Starting process 1 ");
     
-    int to = 300;
+    int to = 100;
     
     int i, j;
     for (i=0; i<to; i++) {
@@ -31,7 +31,7 @@ void sample_process_2() {
 
     printk("Starting process 2 ");
     
-    int to = 300;
+    int to = 100;
     
     int i, j;
     for (i=0; i<to; i++) {

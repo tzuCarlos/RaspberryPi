@@ -29,36 +29,11 @@ __attribute__ ((naked, aligned(32))) static void interrupt_vectors(void)
 }
 
 
-void SWI_handler()
-{
-	register unsigned int addr;
-	register unsigned int swi_no;
-	/* Read link register into addr - contains the address of the
-	 * instruction after the SWI
-	 */
-	asm volatile("mov %[addr], lr" : [addr] "=r" (addr) );
-
-	addr -= 4;
-	/* Bottom 24 bits of the SWI instruction are the SWI number */
-	swi_no = *((unsigned int *)addr) & 0x00ffffff;
-
-	printk("SWI call. Address: 0x");
-	printk("%x",addr);
-	printk("  SWI number ");
-	printk("%d",swi_no);
-	printk("\n");
-
-        //change processor mode
-        asm volatile("cps #0x1f");
-
-        //Handle syscall 
-        syscall(swi_no);
-}
-
 
 void IRQ_handler()
 {
 
+  disable_IRQ();
 // This function starts on IRQ mode
 	
 	// Push all registers into the IRQ mode stack (R13)

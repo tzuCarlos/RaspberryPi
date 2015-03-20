@@ -12,7 +12,7 @@
  */
 void syscall(unsigned int swi) {
 	
-	printk("Handling syscall: ");
+	printk("\nHandling syscall: ");
 	printk("%d",swi);
 	printk("\n");
 	
@@ -24,7 +24,7 @@ void syscall(unsigned int swi) {
 			
 			// Calling the right intra-kernel procedure
 			terminate_process();
-			break;
+                        break;
 	}
 
 	printk("Turning interrupt on again");
