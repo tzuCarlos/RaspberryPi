@@ -2,7 +2,7 @@
 MimiOS - A tiny OS on Raspberry Pi ARMv6 board. 
  
  
-Reference source:
+Reference sources:
  1. Daniel Santos Bathke <danielbathke@gmail.com>, PIqueno
  2. brianwiddas, https://github.com/brianwiddas/pi-baremetal
  3. David Welch <dwelch@dwelch.com>, https://github.com/dwelch67/raspberrypi
